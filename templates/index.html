@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Calculadora de Dano</title>
+</head>
+<body onload="iniciar()">  
+    <div class="calculadora-dano">
+            <div class="bloco">
+                <h1 class="titulo pula-linha">Calculadora de Dano</h1>
+            </div>
+
+            <div class="bloco">
+                <h2>Selecione um personagem</h2>
+            </div>
+
+            <div class="elementos-container">
+
+                {% for personagem in personagens %}
+               
+                <div class="elemento personagem" id="{{personagem.nome}}" data-dano="{{personagem.dano}}">
+                    <img src={{personagem.img}} alt="{{personagem.nome|replace('-', ' ')|title()}}" width="200" height="200">
+                    <p>{{personagem.nome|replace('-', ' ')|title()|replace('Bb 8', 'BB-8')}}</p>
+                </div>
+                
+                {% endfor %}
+
+            </div>
+
+            <div class="bloco">
+                <h2>Selecione um vilão</h2>
+            </div>
+
+            <div class="elementos-container">
+
+                {% for vilao in viloes %}
+
+                <div class="elemento vilao" id="{{vilao.nome}}" data-dano="{{vilao.dano}}">
+                    <img src={{vilao.img}} alt="{{vilao.nome|replace('-', ' ')|title()}}" width="200" height="200">
+                    <p>{{vilao.nome|replace('-', ' ')|title()}}</p>
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            <div class="bloco">
+                <h2>Selecione uma arma</h2>
+            </div>
+
+            <div class="elementos-container">
+
+                {% for arma in armas %}
+
+                <div class="elemento arma" id="{{arma.nome}}" data-dano="{{arma.dano}}">
+                    <img src={{arma.img}} alt="{{arma.nome|replace('-', ' ')|replace('light', 'Light Saber')|replace('han', 'Han Solo')|title()}}" width="200" height="200">
+                    <p>{{arma.nome|replace('-', ' ')|replace('light', 'Light Saber')|replace('han', 'Han Solo')|title()}}</p>
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            <div class="bloco">
+                <button id="calcular" type="button"><a href="#dano">Calcular Dano</a></button>
+            </div>
+
+            <div class="bloco">
+                <span id="dano"></span>
+            </div>
+        </div>
+        <script src="../static/script.js"></script>
+</body>
+</html>
