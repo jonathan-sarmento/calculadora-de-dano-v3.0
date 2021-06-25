@@ -87,7 +87,7 @@ function calcularDano() {
     let resultado = 'Dano: ' + danoTotal + '! ';
 
     if (danoTotal + vidaPersonagem >= vidaVilao) {
-        resultado += 'Parabéns, você matou ' + vilaoSelecionado;
+        resultado += 'Parabéns, você matou ' + document.querySelector(`#${vilaoSelecionado} img`).alt;
     } else {
         resultado += 'Putz, não foi dessa vez, tente novamente!';
     }
